@@ -1,0 +1,8 @@
+# .prettierignore
+
+build/
+node_modules/
+dist/
+*.md
+*.json
+
