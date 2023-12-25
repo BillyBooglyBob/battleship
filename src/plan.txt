@@ -1,0 +1,66 @@
+1 - create ships
+2 - create gameboard
+3 - create player 
+4 - create main game
+    a - create layout
+    b - create game
+
+
+
+ships (length)
+- length
+- hits
+- isSunken
+- perhaps uniquely identify each one 
+
+gameboard
+- two lists for each players ships 
+    - when receiveAttack, check the current ship isSunken()
+        if so, remove from the list
+- place ships on the board
+    - call ships (size of the ship provided by the main game?)
+        - 'S' for ship coordinate
+    - make sure ships aren't in the same position
+    - place on different axis chosen
+    - if x, place horizontally from the current coordinate provided
+        - check if outside the border || coordinate === ''
+    - if y, place vertically from current coordiante 
+- have two boards, one for each player
+    - both set to empty ''
+- receiveAttack (coordinate)
+    - attempts to attack the specified cooridnate, if it hits   
+        mark the board as hit 'H', else, mark the board as miss 'M'
+- allSunken()
+    - check if all ships of the current player are sunken   
+        called by receiveAttack
+    - checks current players list is empty
+- need to determine which ship is hit 
+    - perhaps use numbers for ships on the coordinate
+        depending on the number, know which ship it is
+
+player
+- attack(coordinate)
+    - attacks a specific coordinate of the gameboard
+- have two modes (bot & human)
+    - bot: automatically run when its its turn
+    - human: wait for input
+
+
+main game
+- create players and gameboard
+- call placeShips()
+    - let human player place ships
+    - place ships for the bot automatically
+        - do a randomiser 
+- endless loop constantly checking for a winner
+    - first redraws the gameboard
+    - second player turn
+        - if its bot, use player.botPlay()
+            - botPlay() calls attack
+        - if human, enable the event listener for the board?
+            - take the coordinate and call player.attack()
+    - third check gameboard winner
+        - call gameboard.allSunken(player1/2)
+            - if true, return currentPlayer won
+                & end the game
+- perhaps have current player variable here? 
