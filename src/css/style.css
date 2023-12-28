@@ -1,0 +1,80 @@
+@font-face {
+    font-family: 'headingFont';
+    src:
+        url('./fonts/batmfa__.ttf') format('truetype'),
+        url('./fonts/batmfo__.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+.main-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(239, 223, 204);
+}
+
+.header {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-heading {
+    font-family: 'headingFont';
+    font-size: 40px;
+}
+
+.game-container {
+    flex: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.board-container {
+    display: flex;
+    gap: 20px;
+}
+
+.board {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+}
+
+.block {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #000; /* Add borders for visualization */
+    margin: 1px;
+}
+
+/* .hoverblock {
+
+} */
+
+.hover-block:hover {
+    background-color: lightgray;
+}
+
+.dark-grey {
+    background-color: #444;
+}
+
+.red {
+    background-color: red;
+}
+
+.white {
+    background-color: white;
+}
+
+.green {
+    background-color: greenyellow;
+}

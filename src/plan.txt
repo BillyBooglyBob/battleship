@@ -39,8 +39,22 @@ gameboard
         depending on the number, know which ship it is
 
 player
-- attack(coordinate)
+- mode
+- attack(coordinate, gameboard)
     - attacks a specific coordinate of the gameboard
+- playTurn(gameboard) {
+    if (bot) {
+        randomly find a coordinate then attack
+        randomly generate coordinate
+            - check using gameboard if its 'M' || 'H', if not, attack(coordinate, gameboard)
+
+        attack(coordinate, gameboard)
+    } else {
+        event listener for the enemy board
+        grab the coordinate, then attack
+        attack(coordinate, gameboard)
+    }
+}
 - have two modes (bot & human)
     - bot: automatically run when its its turn
     - human: wait for input
