@@ -1,21 +1,32 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Battleship</title>
-  <script defer src="runtime.bundle.js"></script><script defer src="index.bundle.js"></script></head>
-  <body>
-    <div class="main-container">
-      <div class="header">
-        <div class="header-heading">Battleship</div>
-      </div>
-      <div class="game-container">
-        <div class="board-container">
-          <div class="player-board"></div>
-          <div class="bot-board"></div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Battleship</title>
+    <script defer src="runtime.bundle.js"></script><script defer src="index.bundle.js"></script></head>
+    <body>
+        <div class="main-container">
+            <div class="header">
+                <div class="header-heading">Battleship</div>
+            </div>
+            <div class="game-container">
+                <div class="board-container">
+                    <div id="board1" class="board"></div>
+                    <div id="board2" class="board"></div>
+                </div>
+            </div>
+
+            <div class="place-ship-container">
+                <div class="place-ship">
+                    <div class="place-ship-instruction">Place your ships</div>
+                    <button class="axis">Direction</button>
+                    <div
+                        id="place-ships-map"
+                        class="board-to-place board"
+                    ></div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </body>
+    </body>
 </html>
