@@ -18,9 +18,9 @@ test('cannot place ships in already used coordinates', () => {
     // from 0,0 to 0, 2
     // so battleship2 cannot be placed there
     gameboard1.addShip(battleship1, [0, 0], 'x');
-    gameboard1.addShip(battleship2, [0, 2], 'x');
+    expect(gameboard1.addShip(battleship2, [0, 1], 'x')).toBeFalsy();
 
-    expect(gameboard1.getBoard()[0][3]).toBe(1);
+    expect(gameboard1.getBoard()[0][2]).toBe(0);
 });
 
 test('check ship is placed and able to be attacked', () => {

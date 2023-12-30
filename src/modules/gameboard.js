@@ -1,10 +1,21 @@
 export default function gameboard() {
-    const board = Array.from({ length: 10 }, () => Array(10).fill(''));
+    let board = Array.from({ length: 10 }, () => Array(10).fill(''));
     const ships = [];
+
+    function anotherShipAtLocation(coordVal) {
+        if (typeof coordVal === 'number') {
+            return true;
+        }
+        return false;
+    }
 
     /* add ship to the specified coordinate in the direction of the axis
      */
     function addShip(ship, coordinate, direction) {
+        // need to check if there are other ships at that coord
+        // if so, return flase and the ship
+        // only push when you are sure you can place the ship
+
         ships.push(ship);
         // have index of the ship be its unique identifier to know which
         // ship to apply hit() to
@@ -17,7 +28,24 @@ export default function gameboard() {
             (direction === 'x' && startY + ship.getLength() - 1 > 9) ||
             (direction === 'y' && startX + ship.getLength() - 1 > 9)
         ) {
-            return;
+            return false;
+        }
+
+        // check if other ships exist at the planned locations
+        for (let i = 0; i < ship.getLength(); i += 1) {
+            if (direction === 'x') {
+                const coord = board[startX][startY + i];
+                if (anotherShipAtLocation(coord)) {
+                    ships.pop();
+                    return false;
+                }
+            } else {
+                const coord = board[startX - i][startY];
+                if (anotherShipAtLocation(coord)) {
+                    ships.pop();
+                    return false;
+                }
+            }
         }
 
         // Add ship to the board
@@ -28,6 +56,8 @@ export default function gameboard() {
                 board[startX - i][startY] = coordinateSymbol;
             }
         }
+
+        return true;
     }
 
     /* Given the specified coordinate, try to attack that position
@@ -55,10 +85,15 @@ export default function gameboard() {
         return board;
     }
 
+    function clearBoard() {
+        board = Array.from({ length: 10 }, () => Array(10).fill(''));
+    }
+
     return {
         addShip,
         receiveAttack,
         isAllSunken,
-        getBoard
+        getBoard,
+        clearBoard
     };
 }
